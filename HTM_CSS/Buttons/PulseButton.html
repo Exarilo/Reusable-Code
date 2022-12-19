@@ -1,0 +1,27 @@
+<style>
+  .pulse-button {
+    border: none;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #3498db;
+    color: #ffffff;
+    animation: pulse 1s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+</style>
+
+<button class="pulse-button">Bouton</button>
