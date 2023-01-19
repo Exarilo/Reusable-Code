@@ -1,6 +1,21 @@
-public static class BasicsExtensions
+public static class IEnumerableExtensions
 {
-    public static T Random<T>(this IEnumerable<T> enumerable)
+    public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> elements, int k)
+    {
+        return k == 0 ? new[] { new T[0] } :
+          elements.SelectMany((e, i) =>
+            elements.Skip(i + 1).Combinations(k - 1).Select(c => (new[] { e }).Concat(c)));
+    }
+    private static IEnumerable<int> ClosestLowerSum(this IEnumerable<int> elements, int n)
+    {
+        var combinations = elements.Combinations(2);
+        var closest = combinations
+            .Where(c => c.Sum() <= n)
+            .OrderBy(c => Math.Abs(c.Sum() - n))
+            .FirstOrDefault();
+        return closest ?? new int[] { };
+    }
+    ic static T Random<T>(this IEnumerable<T> enumerable)
     {
         var random = new Random();
         var list = enumerable.ToList();

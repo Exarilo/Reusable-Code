@@ -1,4 +1,4 @@
-public static class BasicsExtensions
+public static class UsefullExtensions
 {
     public static bool IsUrl(this string str)
     {
