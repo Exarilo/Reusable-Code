@@ -15,7 +15,7 @@ public static class IEnumerableExtensions
             .FirstOrDefault();
         return closest ?? new int[] { };
     }
-    ic static T Random<T>(this IEnumerable<T> enumerable)
+    public static T Random<T>(this IEnumerable<T> enumerable)
     {
         var random = new Random();
         var list = enumerable.ToList();
